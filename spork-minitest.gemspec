@@ -3,6 +3,7 @@ Gem::Specification.new do |s|
   s.version     = "0.0.1"
   s.authors     = ["Semyon Perepelitsa"]
   s.email       = ["sema@sema.in"]
+  s.homepage    = "https://github.com/semaperepelitsa/spork-minitest"
   s.summary     = "MiniTest runner for Spork"
   # s.description = %q{TODO: Write a gem description}
 
