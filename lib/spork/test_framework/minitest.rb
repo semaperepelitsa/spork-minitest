@@ -4,18 +4,18 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
 
   def run_tests(argv, stderr, stdout)
     require "minitest/unit"
-    $LOAD_PATH << "test"
+    $LOAD_PATH << "test" << "."
     ::MiniTest::Unit.output = stdout
 
-    sep = '--'
-    paths = argv.take_while{ |arg| arg != sep }
-    args = argv.drop_while{ |arg| arg != sep }
-    args.shift
+    paths, opts = argv.slice_before("--").to_a
+    paths ||= []
+    opts ||= []
+    opts.shift
 
     paths.each do |path|
-      next if path.start_with?("-")
-      load File.expand_path(path)
+      require path
     end
-    ::MiniTest::Unit.new.run(args)
+
+    ::MiniTest::Unit.new.run(opts)
   end
 end
