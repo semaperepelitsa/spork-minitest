@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-require 'minitest/unit'
 require 'drb'
 
 DRb.start_service
