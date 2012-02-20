@@ -2,7 +2,5 @@
 require 'minitest/unit'
 require 'drb'
 
-# this allows Ruby to do some magical stuff so you can pass an output stream over DRb.
 DRb.start_service
-test_server = DRbObject.new_with_uri("druby://127.0.0.1:8988")
-result = test_server.run(ARGV, $stderr, $stdout)
+DRbObject.new_with_uri("druby://127.0.0.1:8988").run(ARGV, $stderr, $stdout)
