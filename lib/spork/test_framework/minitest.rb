@@ -7,15 +7,20 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
     $LOAD_PATH << "test" << "."
     ::MiniTest::Unit.output = stdout
 
-    paths, opts = argv.slice_before("--").to_a
-    paths ||= []
-    opts ||= []
-    opts.shift
+    paths, opts = parse_options(argv)
 
     paths.each do |path|
       require path
     end
 
     ::MiniTest::Unit.new.run(opts)
+  end
+
+  def parse_options(argv)
+    paths, opts = argv.slice_before("--").to_a
+    paths ||= []
+    opts ||= []
+    opts.shift
+    [paths, opts]
   end
 end
