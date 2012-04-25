@@ -1,7 +1,7 @@
 spork-minitest
 ==
 
-Key differences from spork-testunit:
+Key differences from [spork-testunit](https://github.com/sporkrb/spork-testunit):
 
 * Supports only Ruby 1.9.
 * Allows passing options to MiniTest::Unit e.g. `testdrb test/first_test.rb -- --seed 12345`.
