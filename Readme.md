@@ -1,5 +1,5 @@
 spork-minitest
-==
+==============
 
 Key differences from [spork-testunit](https://github.com/sporkrb/spork-testunit):
 
