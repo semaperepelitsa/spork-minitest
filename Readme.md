@@ -11,7 +11,7 @@ Key differences from [spork-testunit](https://github.com/sporkrb/spork-testunit)
   
   `ruby test/test_first.rb --seed 12345 -n test_truth`
   
-  When using testdrb you pass them after double dash:
+  When using testdrb you pass them after a double dash:
   
   `testdrb test/first_test.rb -- --seed 12345 -n test_truth`
 
