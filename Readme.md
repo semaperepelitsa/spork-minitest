@@ -1,7 +1,9 @@
 spork-minitest
 ==============
 
-MiniTest runner for [Spork](https://github.com/sporkrb/spork). A successor to [spork-testunit](https://github.com/sporkrb/spork-testunit) with the following differences: 
+MiniTest runner for [Spork](https://github.com/sporkrb/spork).
+A successor to [spork-testunit](https://github.com/sporkrb/spork-testunit)
+with the following differences: 
 
 * Supports only Ruby 1.9.
 
@@ -17,7 +19,8 @@ MiniTest runner for [Spork](https://github.com/sporkrb/spork). A successor to [s
 
 * Exits with proper code (0 for success, 1 for failure).
 
-  Some automated test running tools like Autotest and Guard rely on this to detect test failure.
+  Some automated test running tools like Autotest and Guard
+  rely on this to detect test failure.
 
 * Does not support -I option, hardcoded to add `.` and `test` to the load path.
 
