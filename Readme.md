@@ -13,7 +13,7 @@ with the following differences:
   
   `ruby test/test_first.rb --seed 12345 -n test_truth`
   
-  When using testdrb you pass them after double dash:
+  When using testdrb you pass them after a double dash:
   
   `testdrb test/first_test.rb -- --seed 12345 -n test_truth`
 
