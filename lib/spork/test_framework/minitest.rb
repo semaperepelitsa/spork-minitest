@@ -3,15 +3,13 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
   HELPER_FILE = File.join(Dir.pwd, "test/test_helper.rb")
 
   def run_tests(argv, err, out)
-    $LOAD_PATH << "test" << "."
-
     $stderr = err
     $stdout = out
 
     paths, opts = parse_options(argv)
 
     paths.each do |path|
-      require path
+      require File.join(Dir.pwd, path)
     end
   end
 

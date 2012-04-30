@@ -1,4 +1,4 @@
-require "test_helper"
+require_relative "test_helper"
 
 class SecondTest < MiniTest::Unit::TestCase
   def test_failure
