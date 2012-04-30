@@ -8,7 +8,13 @@ Gem::Specification.new do |s|
   # s.description = %q{TODO: Write a gem description}
 
   s.executables   = ["testdrb"]
-  s.files         = %w[ bin/testdrb lib/spork/test_framework/minitest.rb metatest/test_spork_minitest.rb Readme.md ]
+  s.files         = %w[
+                      bin/testdrb
+                      lib/spork/test_framework/minitest.rb
+                      metatest/test_spork_minitest.rb
+                      Readme.md
+                      Changelog.md 
+                    ]
   s.require_paths = ["lib"]
 
   s.add_dependency "spork"
