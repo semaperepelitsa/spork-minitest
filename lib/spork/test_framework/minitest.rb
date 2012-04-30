@@ -11,6 +11,8 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
     paths.each do |path|
       require File.join(Dir.pwd, path)
     end
+
+    MiniTest::Unit.runner.run(opts)
   end
 
   def parse_options(argv)
