@@ -36,9 +36,11 @@ Install spork into your test helper using the following command or manually.
 
     spork minitest --bootstrap
 
-Start `spork` and run your tests using `testdrb`.
+Start `spork` and run your tests using `testdrb`. Some examples:
 
     testdrb test/integration_test.rb
+    testdrb test/integration_test.rb -- --seed 1234
+    SPORK_PORT=8989 testdrb test/integration_test.rb
 
 If you do `require 'test_helper'` in every test you will get `LoadError: cannot load such file -- test_helper`.
 To fix that add the following to the very top of your test helper:

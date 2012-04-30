@@ -1,7 +1,10 @@
 #!/usr/bin/env ruby
 require 'drb'
 
+port = ENV['SPORK_PORT'] || 8988
+uri = ENV['SPORK_URI'] || "druby://127.0.0.1:#{port}"
+
 DRb.start_service
-exit_code = DRbObject.new_with_uri("druby://127.0.0.1:8988").run(ARGV, $stderr, $stdout)
+exit_code = DRbObject.new_with_uri(uri).run(ARGV, $stderr, $stdout)
 
 exit(exit_code || false)
