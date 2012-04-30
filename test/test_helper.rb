@@ -1,5 +1,5 @@
 require "spork"
 
 Spork.prefork do
-  require "minitest/unit"
+  require "minitest/autorun"
 end
