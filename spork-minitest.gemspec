@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "spork-minitest"
-  s.version     = "0.0.2"
+  s.version     = "0.0.3"
   s.authors     = ["Semyon Perepelitsa"]
   s.email       = ["sema@sema.in"]
   s.homepage    = "https://github.com/semaperepelitsa/spork-minitest"
