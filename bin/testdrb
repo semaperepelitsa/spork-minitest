@@ -1,7 +1,32 @@
 #!/usr/bin/env ruby
+
+require 'optparse'
 require 'drb'
 
-DRb.start_service
-exit_code = DRbObject.new_with_uri("druby://127.0.0.1:8988").run(ARGV, $stderr, $stdout)
+options = {
+  host: "127.0.0.1",
+  port: 8988,
+}
+
+opt = OptionParser.new
+opt.banner = "Usage: testdrb [path/to/test_to_run] [options] -- [options for test]\n\n"
+
+opt.separator "Options:"
+
+opt.on("-h", "--host [host]") {|host| options[:host] = host }
+opt.on("-p", "--port [PORT]") {|port| options[:port] = port }
+
+opt.on("-?", "--help") { options[:help] = true }
+
+argv = opt.parse(ARGV)
+
+if options[:help]
+  puts opt
+  exit_code = 0
+
+else
+  DRb.start_service
+  exit_code = DRbObject.new_with_uri("druby://#{options[:host]}:#{options[:port]}").run(argv, $stderr, $stdout)
+end
 
 exit(exit_code || false)
