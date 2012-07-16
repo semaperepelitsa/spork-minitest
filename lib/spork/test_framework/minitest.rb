@@ -5,10 +5,16 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
   def run_tests(argv, stderr, stdout)
     require "minitest/unit"
     $LOAD_PATH << "test" << "."
-    ::MiniTest::Unit.output = stdout
+    
+    io_class = ::MiniTest::Unit.output.class
+    if defined?(PrideIO) and io_class == PrideIO or defined?(PrideLOL) and io_class == PrideLOL
+      # Respect minitest/pride
+      ::MiniTest::Unit.output = io_class.new(stdout)
+    else
+      ::MiniTest::Unit.output = stdout
+    end
 
     paths, opts = parse_options(argv)
-
     paths.each do |path|
       require path
     end
