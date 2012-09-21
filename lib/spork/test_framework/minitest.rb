@@ -9,11 +9,23 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
 
     paths, opts = parse_options(argv)
 
-    paths.each do |path|
-      require path
-    end
+    if defined? Turn
+      turn_opts = {}
+      opts.each_slice(2) { |opt| turn_opts[opt[0]] = opt[1] }
 
-    ::MiniTest::Unit.new.run(opts)
+      config = Turn.config do |c|
+        c.tests   = paths
+        c.pattern = Regexp.new(turn_opts["-n"].gsub("/", "")) if turn_opts.has_key?("-n")
+      end
+      controller = Turn::Controller.new(config)
+      controller.start
+    else
+      paths.each do |path|
+        require path
+      end
+
+      ::MiniTest::Unit.new.run(opts)
+    end
   end
 
   def parse_options(argv)
