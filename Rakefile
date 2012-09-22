@@ -27,3 +27,5 @@ task :test do
     run "bin/testdrb first_test.rb -- -n test_false -v"
   end
 end
+
+task :default => :test
