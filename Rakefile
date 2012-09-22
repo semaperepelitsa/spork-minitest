@@ -21,10 +21,10 @@ end
 task :test do
   running "bundle exec spork minitest" do
     prompt_wait "Press return when spork is loaded"
-    run "bin/testdrb first_test.rb"
-    run "bin/testdrb first_test.rb second_test.rb"
-    run "bin/testdrb first_test.rb -- -n test_false"
-    run "bin/testdrb first_test.rb -- -n test_false -v"
+    run "bin/testdrb test/first_test.rb"
+    run "bin/testdrb test/first_test.rb test/second_test.rb"
+    run "bin/testdrb test/first_test.rb -- -n test_false"
+    run "bin/testdrb test/first_test.rb -- -n test_false -v"
   end
 end
 

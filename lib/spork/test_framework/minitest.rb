@@ -12,7 +12,7 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
       require File.join(Dir.pwd, path)
     end
 
-    MiniTest::Unit.runner.run(opts)
+    ::MiniTest::Unit.runner.run(opts)
   end
 
   def parse_options(argv)

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spork-minitest (0.0.3)
+    spork-minitest (1.0.rc1)
       spork
 
 GEM
