@@ -22,7 +22,8 @@ with the following differences:
   Some automated test running tools like Autotest and Guard
   rely on this to detect test failure.
 
-* Does not support -I option, hardcoded to add `.` and `test` to the load path.
+* Does not support -I option to modify load path.
+
 
 Usage
 -----
@@ -39,8 +40,20 @@ Start `spork` and run your tests using `testdrb`.
 
     testdrb test/integration_test.rb
 
-If you use [Autotest](https://github.com/seattlerb/zentest) you can run
-all tests over Spork by adding the following lines to your .autotest file.
+If you do `require 'test_helper'` in every test you will get `LoadError: cannot load such file -- test_helper`.
+To fix that add the following to the very top of your test helper:
+
+    $LOAD_PATH << "test"
+
+### Different test helper
+
+You can specify different test helper when starting spork and run tests as usual.
+
+    HELPER_FILE=spec/spec_helper.rb spork
+
+### [Autotest][]
+
+You can run all tests over Spork by adding the following lines to your .autotest file.
 
     class Autotest
       # run tests over drb server (spork)
@@ -52,3 +65,5 @@ all tests over Spork by adding the following lines to your .autotest file.
         end
       end
     end
+
+[Autotest]: https://github.com/seattlerb/zentest
