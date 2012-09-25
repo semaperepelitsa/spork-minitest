@@ -13,16 +13,16 @@ def prompt_wait message = nil
   $stdin.gets
 end
 
-def run command
+def run env = {}, command
   puts command
   out_rd, out_wr = IO.pipe
-  system command, out: out_wr
+  system env, command, out: out_wr
   out_wr.close
   puts "-" * 30, "Output:", out_rd.read, "-" * 30
 end
 
-def testdrb args
-  run "bundle exec testdrb #{args}"
+def testdrb env = {}, args
+  run env, "bundle exec testdrb #{args}"
 end
 
 def cd path, &block
@@ -43,9 +43,9 @@ end
 
 task "test:spec" do
   cd "spec_project" do
-    running({"HELPER_FILE" => "spec/spec_helper.rb"}, "bundle exec spork minitest") do
+    running({"HELPER_FILE" => "spec/spec_helper.rb"}, "bundle exec spork minitest -p 8990") do
       prompt_wait "Press return when spork is loaded"
-      testdrb "spec/some_spec.rb"
+      testdrb({ "SPORK_PORT" => "8990" }, "spec/some_spec.rb")
     end
   end
 end
