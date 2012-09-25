@@ -1,6 +1,9 @@
 class Spork::TestFramework::MiniTest < Spork::TestFramework
   DEFAULT_PORT = 8988
-  HELPER_FILE = File.join(Dir.pwd, "test/test_helper.rb")
+
+  def self.helper_file
+    ENV['HELPER_FILE'] || "test/test_helper.rb"
+  end
 
   def run_tests(argv, stderr, stdout)
     require "minitest/unit"

@@ -41,6 +41,15 @@ task "test:unit" do
   end
 end
 
-task :test => "test:unit"
+task "test:spec" do
+  cd "spec_project" do
+    running({"HELPER_FILE" => "spec/spec_helper.rb"}, "bundle exec spork minitest") do
+      prompt_wait "Press return when spork is loaded"
+      testdrb "spec/some_spec.rb"
+    end
+  end
+end
+
+task :test => ["test:unit", "test:spec"]
 
 task :default => :test
