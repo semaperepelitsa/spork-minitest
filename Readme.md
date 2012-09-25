@@ -30,7 +30,7 @@ Usage
 
 Add it to your gemfile.
 
-    gem "spork-minitest", "~> 0.0.2"
+    gem "spork-minitest", "~> 1.0.0.beta1"
 
 Install spork into your test helper using the following command or manually.
 
