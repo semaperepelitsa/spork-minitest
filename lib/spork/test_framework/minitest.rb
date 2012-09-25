@@ -7,13 +7,12 @@ class Spork::TestFramework::MiniTest < Spork::TestFramework
 
   def run_tests(argv, stderr, stdout)
     require "minitest/unit"
-    $LOAD_PATH << "test" << "."
     ::MiniTest::Unit.output = stdout
 
     paths, opts = parse_options(argv)
 
     paths.each do |path|
-      require path
+      load path
     end
 
     ::MiniTest::Unit.new.run(opts)
