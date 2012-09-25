@@ -1,0 +1,14 @@
+Changelog.md
+Gemfile
+Gemfile.lock
+Rakefile
+Readme.md
+bin/testdrb
+lib/spork/test_framework/minitest.rb
+metatest/test_spork_minitest.rb
+spec_project/spec/some_spec.rb
+spec_project/spec/spec_helper.rb
+spork-minitest.gemspec
+unit_project/test/first_test.rb
+unit_project/test/second_test.rb
+unit_project/test/test_helper.rb
