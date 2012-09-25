@@ -1,4 +1,5 @@
 require 'bundler/gem_tasks'
+require "fileutils"
 
 def running(*args)
   pid = spawn(*args)
@@ -20,14 +21,26 @@ def run command
   puts "-" * 30, "Output:", out_rd.read, "-" * 30
 end
 
-task :test do
-  running "bundle exec spork minitest" do
-    prompt_wait "Press return when spork is loaded"
-    run "bin/testdrb test/first_test.rb"
-    run "bin/testdrb test/first_test.rb test/second_test.rb"
-    run "bin/testdrb test/first_test.rb -- -n test_false"
-    run "bin/testdrb test/first_test.rb -- -n test_false -v"
+def testdrb args
+  run "bundle exec testdrb #{args}"
+end
+
+def cd path, &block
+  FileUtils.cd path, verbose: true, &block
+end
+
+task "test:unit" do
+  cd "unit_project" do
+    running "bundle exec spork minitest" do
+      prompt_wait "Press return when spork is loaded"
+      testdrb "test/first_test.rb"
+      testdrb "test/first_test.rb test/second_test.rb"
+      testdrb "test/first_test.rb -- -n test_false"
+      testdrb "test/first_test.rb -- -n test_false -v"
+    end
   end
 end
+
+task :test => "test:unit"
 
 task :default => :test
