@@ -13,9 +13,11 @@ def prompt_wait message = nil
 end
 
 def run command
-  puts "=" * 30
   puts command
-  system command
+  out_rd, out_wr = IO.pipe
+  system command, out: out_wr
+  out_wr.close
+  puts "-" * 30, "Output:", out_rd.read, "-" * 30
 end
 
 task :test do
