@@ -51,7 +51,7 @@ To fix that add the following to the very top of your test helper:
 
 You can specify different test helper when starting spork and run tests as usual.
 
-    HELPER_FILE=spec/spec_helper.rb spork
+    HELPER_FILE=spec/spec_helper.rb spork minitest
 
 ### [Autotest][]
 
