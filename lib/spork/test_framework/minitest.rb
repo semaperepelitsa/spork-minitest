@@ -1,8 +1,9 @@
 class Spork::TestFramework::MiniTest < Spork::TestFramework
   DEFAULT_PORT = 8988
+  DEFAULT_HELPER_FILES = %w[test/minitest_helper.rb test/test_helper.rb spec/spec_helper.rb]
 
   def self.helper_file
-    ENV['HELPER_FILE'] || "test/test_helper.rb"
+    ENV['HELPER_FILE'] || DEFAULT_HELPER_FILES.find{ |f| File.exist?(f) }
   end
 
   def run_tests(argv, stderr, stdout)
