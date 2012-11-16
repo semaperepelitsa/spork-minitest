@@ -69,3 +69,7 @@ You can run all tests over Spork by adding the following lines to your .autotest
     end
 
 [Autotest]: https://github.com/seattlerb/zentest
+
+### License
+
+Spork-MiniTest is released under the [MIT License](http://www.opensource.org/licenses/MIT).
