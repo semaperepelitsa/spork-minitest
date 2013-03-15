@@ -5,6 +5,6 @@ port = ENV['SPORK_PORT'] || 8988
 uri = ENV['SPORK_URI'] || "druby://127.0.0.1:#{port}"
 
 DRb.start_service
-exit_code = DRbObject.new_with_uri(uri).run(ARGV, $stderr, $stdout)
+exit_code = DRbObject.new_with_uri(uri).run(ARGV, $stderr, $stdout).to_i
 
 exit(exit_code || false)
